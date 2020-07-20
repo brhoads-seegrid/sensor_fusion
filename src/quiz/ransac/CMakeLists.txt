@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
-add_definitions(-std=c++11)
+add_definitions(-std=c++14)
 
-set(CXX_FLAGS "-Wall")
+set(CXX_FLAGS "-Wall -fmax-errors=1")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
 project(playback)
@@ -15,8 +15,10 @@ add_definitions(${PCL_DEFINITIONS})
 list(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
 
 
-add_executable (quizRansac ransac2d.cpp ../../render/render.cpp)
+add_executable (quizRansac ransac2d.cpp ransac3d.cpp ../../render/render.cpp)
+add_executable (ransac ransac.cpp ransac3d.cpp ../../render/render.cpp)
 target_link_libraries (quizRansac ${PCL_LIBRARIES})
+target_link_libraries (ransac ${PCL_LIBRARIES})
 
 
 
