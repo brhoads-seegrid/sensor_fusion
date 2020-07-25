@@ -32,10 +32,22 @@ pcl::PointXYZI operator- ( pcl::PointXYZI p1, pcl::PointXYZI p2 )
 
 pcl::PointXYZI crossProduct ( pcl::PointXYZI v1, pcl::PointXYZI v2 )
 {
+    /*
     return pcl::PointXYZI (
         v1.y * v2.z - v1.z * v2.y,
         v1.z * v2.x - v1.x * v2.z,
         v1.x * v2.y - v1.y * v2.x );
+        
+        // Apparently this ctor is pretty new (1.11) and Udacity is using an
+        // older version of PCL. Sorry if that was mentioned somewhere,
+        // but I didn't notice any version information.
+    */
+    pcl::PointXYZI v3;
+    v3.x = v1.y * v2.z - v1.z * v2.y;
+    v3.y = v1.z * v2.x - v1.x * v2.z;
+    v3.z = v1.x * v2.y - v1.y * v2.x );
+        // Default value of intensity okay.
+    return v3;
 }
 
 
