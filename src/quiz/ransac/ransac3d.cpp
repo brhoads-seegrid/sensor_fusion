@@ -18,7 +18,16 @@ using namespace std;
 
 pcl::PointXYZI operator- ( pcl::PointXYZI p1, pcl::PointXYZI p2 )
 {
-    return pcl::PointXYZI ( p1.x - p2.x, p1.y - p2.y, p1.z - p2.z );
+    //return pcl::PointXYZI ( p1.x - p2.x, p1.y - p2.y, p1.z - p2.z );
+        // Apparently this ctor is pretty new (1.11) and Udacity is using an
+        // older version of PCL. Sorry if that was mentioned somewhere,
+        // but I didn't notice any version information.
+    pcl::PointXYZI p3;
+    p3.x = p1.x - p2.x;
+    p3.y = p1.y - p2.y;
+    p3.z = p1.z - p2.z;
+        // Default value of intensity okay.
+    return p3;
 }
 
 pcl::PointXYZI crossProduct ( pcl::PointXYZI v1, pcl::PointXYZI v2 )
